@@ -46,6 +46,7 @@ export default function Home() {
           <div className="py-3 px-36 mt-10 flex flex-wrap justify-center">
             {/* CARD */}
             <div className="w-64 h-72 m-3 rounded overflow-hidden border cursor-pointer">
+              <Link href="/restaurant/milestones-grill">
               <img
                 src="https://resizer.otstatic.com/v2/photos/wide-huge/2/31852905.jpg"
                 alt=""
@@ -64,6 +65,7 @@ export default function Home() {
                 </div>
                 <p className="text-sm mt-1 font-bold">Booked 3 times today</p>
               </div>
+              </Link>
             </div>
             {/* CARD */}
           </div>
