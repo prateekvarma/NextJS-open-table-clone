@@ -8,7 +8,7 @@ interface Props {
 export default function RestaurantCard({restaurant}: Props) {
   return (
     <div className="w-64 h-72 m-3 rounded overflow-hidden border cursor-pointer">
-      <Link href="/restaurant/milestones-grill">
+      <Link href={`/restaurant/${restaurant.slug}`}>
         <img
           src={restaurant.main_image}
           alt=""
