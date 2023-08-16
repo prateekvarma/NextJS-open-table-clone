@@ -8,7 +8,7 @@ export interface RestaurantCardType {
   main_image: string;
   cuisine: Cuisine;
   location: Location;
-  price: PRICE
+  price: PRICE;
 }
 
 const prisma = new PrismaClient();
@@ -35,7 +35,7 @@ export default async function Home() {
       <Header />
       <div className="py-3 px-36 mt-10 flex flex-wrap justify-center">
         {restaurants.map((restaurant) => {
-          return <RestaurantCard restautant={restaurant} />;
+          return <RestaurantCard restaurant={restaurant} />;
         })}
       </div>
     </main>
