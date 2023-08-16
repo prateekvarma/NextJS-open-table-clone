@@ -1,6 +1,11 @@
 import Link from "next/link";
+import { RestaurantCardType } from "../page";
 
-export default function RestaurantCard() {
+interface Props {
+  restautant: RestaurantCardType
+}
+
+export default function RestaurantCard({}: Props) {
   return (
     <div className="w-64 h-72 m-3 rounded overflow-hidden border cursor-pointer">
       <Link href="/restaurant/milestones-grill">
