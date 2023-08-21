@@ -14,14 +14,17 @@ export default function SearchSidebar({
     {
       price: PRICE.CHEAP,
       label: "$",
+      className: "border w-full text-reg text-center font-light rounded-l p-2",
     },
     {
       price: PRICE.REGULAR,
       label: "$$",
+      className: "border w-full text-reg text-center font-light p-2",
     },
     {
       price: PRICE.EXPENSIVE,
       label: "$$$",
+      className: "border w-full text-reg text-center font-light rounded-r p-2",
     },
   ];
 
@@ -64,14 +67,14 @@ export default function SearchSidebar({
       <div className="mt-3 pb-4">
         <h1 className="mb-2">Price</h1>
         <div className="flex">
-          {prices.map(({ price, label }) => {
+          {prices.map(({ price, label, className }) => {
             return (
               <Link
                 href={{
                   pathname: "/search",
                   query: { ...searchParams, price },
                 }}
-                className="border w-full text-reg font-light rounded-l p-2"
+                className={className}
               >
                 {label}
               </Link>
