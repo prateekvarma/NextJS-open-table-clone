@@ -34,7 +34,7 @@ const fetchRestaurantBySlug = async (slug: string): Promise<Restaurant> => {
   });
 
   if (!restaurant)
-    throw new Error("Restaurant is null in fetchRestaurantBySlug");
+    throw new Error("Cannot find Restaurant");
 
   return restaurant;
 };
