@@ -1,32 +1,44 @@
-"use client"
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 
-import Box from '@mui/material/Box';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
-import Modal from '@mui/material/Modal';
+import Box from "@mui/material/Box";
+import Button from "@mui/material/Button";
+import Typography from "@mui/material/Typography";
+import Modal from "@mui/material/Modal";
 
 const style = {
-  position: 'absolute' as 'absolute',
-  top: '50%',
-  left: '50%',
-  transform: 'translate(-50%, -50%)',
+  position: "absolute" as "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
   width: 400,
-  bgcolor: 'background.paper',
-  border: '2px solid #000',
+  bgcolor: "background.paper",
+  border: "2px solid #000",
   boxShadow: 24,
   p: 4,
 };
 
-export default function LoginModal() {
+export default function LoginModal({ isSignin }: { isSignin: Boolean }) {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
+  const renderContent = (signinContent: string, signupContent: string) => {
+    return isSignin ? signinContent : signupContent;
+  };
+
   return (
     <div>
-      <Button onClick={handleOpen}>Open modal</Button>
+      <button
+        onClick={handleOpen}
+        className={`${renderContent(
+          "bg-blue-400 text-white",
+          ""
+        )} border p-1 px-4 rounded mr-3`}
+      >
+        {renderContent("Sign in", "Sign up")}
+      </button>
       <Modal
         open={open}
         onClose={handleClose}
