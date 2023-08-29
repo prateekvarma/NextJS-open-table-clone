@@ -3,8 +3,6 @@
 import { useState } from "react";
 
 import Box from "@mui/material/Box";
-import Button from "@mui/material/Button";
-import Typography from "@mui/material/Typography";
 import Modal from "@mui/material/Modal";
 import AuthModalInputs from "./AuthModalInputs";
 
@@ -21,11 +19,26 @@ const style = {
 
 export default function AuthModal({ isSignin }: { isSignin: Boolean }) {
   const [open, setOpen] = useState(false);
+  const [inputs, setInputs] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    phone: "",
+    city: "",
+    password: "",
+  });
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const renderContent = (signinContent: string, signupContent: string) => {
     return isSignin ? signinContent : signupContent;
+  };
+
+  const handleChangeInput = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setInputs({
+      ...inputs,
+      [e.target.name]: e.target.value,
+    });
   };
 
   return (
@@ -59,7 +72,11 @@ export default function AuthModal({ isSignin }: { isSignin: Boolean }) {
                   "Create Your Open Table Account"
                 )}
               </h2>
-              <AuthModalInputs />
+              <AuthModalInputs
+                inputs={inputs}
+                handleChangeInput={handleChangeInput}
+                isSignin={isSignin}
+              />
               <button className="uppercase bg-red-600 w-full text-white p-3 rounded text-sm mb-10 disabled:bg-gray-400">
                 {renderContent("Sign In", "Create Account")}
               </button>
