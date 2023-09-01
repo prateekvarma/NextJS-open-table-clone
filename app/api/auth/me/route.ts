@@ -1,6 +1,5 @@
-import { headers } from "next/headers";
 import { NextResponse } from "next/server";
-import * as jose from "jose";
+import { headers } from "next/headers";
 import jwt from "jsonwebtoken";
 import { PrismaClient } from "@prisma/client";
 
@@ -17,23 +16,6 @@ export async function GET(req: Request) {
     );
 
   const token = bearerToken.split(" ")[1];
-
-  if (!token)
-    return NextResponse.json(
-      { errorMessage: "Unauthorized Request: No token" },
-      { status: 401 }
-    );
-
-  const secret = new TextEncoder().encode(process.env.JWT_SECRET);
-
-  try {
-    await jose.jwtVerify(token, secret);
-  } catch (error) {
-    return NextResponse.json(
-      { errorMessage: "Unauthorized Request: No jwtVerify" },
-      { status: 401 }
-    );
-  }
 
   const payload = jwt.decode(token) as { email: string };
 
