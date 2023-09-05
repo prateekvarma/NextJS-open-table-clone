@@ -1,11 +1,12 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 
 import Box from "@mui/material/Box";
 import Modal from "@mui/material/Modal";
 import AuthModalInputs from "./AuthModalInputs";
 import useAuth from "@/hooks/useAuth";
+import { AuthenticationContext } from "../context/AuthContext";
 
 const style = {
   position: "absolute" as "absolute",
@@ -19,6 +20,9 @@ const style = {
 };
 
 export default function AuthModal({ isSignin }: { isSignin: Boolean }) {
+  const { error, loading, data, setAuthState } = useContext(
+    AuthenticationContext
+  );
   const [open, setOpen] = useState(false);
   const [inputs, setInputs] = useState({
     firstName: "",
